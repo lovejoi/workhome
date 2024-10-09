@@ -4,11 +4,11 @@ This Terraform configuration deploys an Amazon EKS cluster with Karpenter for au
 
 #Steps for start EKS
 
-git clone git@github.com:lovejoi/workhome.git  #clone repo
-cd workhome/task1   #change dir for task1
-vim terraform.tfvars # updatefile with your variables
-vim main.tf     #check vpc and sumbets name  
-terraform init     #terraform initialize
+git clone https://github.com/lovejoi/workhome.git  #clone repo
+cd workhome/task1                   change dir for task1
+vim terraform.tfvars         # updatefile with your variables
+vim main.tf                 #check vpc and sumbets name  
+terraform init              #terraform initialize
 terraform plan     #will show plan what cluster will be created
 terraform apply    #cluster will be create
 
@@ -21,7 +21,7 @@ kubectl get nodes
 
 
 #Example of deploy with x86
-
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -41,13 +41,13 @@ spec:
       containers:
       - name: nginx
         image: nginx:latest
---------------------------------
+```
 kubectl apply -f nginx-amd64.yaml
 
 
 
 #Deploy on Graviton (arm64)
-
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -68,12 +68,12 @@ spec:
       - name: nginx
         image: nginx:latest
  
- ----------------------------
+ ```
 kubectl apply -f nginx-arm64.yaml
 
 kubectl get deployments & kubectl get pods -o wide # check status 
 
-terraform destroy # destroy cluster 
+##### terraform destroy
 
 
 
